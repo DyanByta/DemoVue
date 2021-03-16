@@ -1,0 +1,11 @@
+/*
+Created by Dyan at 2020.09.30 16:18
+ */
+.item_block{
+    border: 1px dashed slategray;
+    margin: 2px;
+    /*display: inline-block;*/
+}
+.float_left{
+    float: left;
+}

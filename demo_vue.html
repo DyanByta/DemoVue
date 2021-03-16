@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>🐱🐱</title>
+    <link rel="stylesheet" href="css/demo_vue.css">
+</head>
+<body>
+    <div id="app" class="item_block">
+        {{ message }}
+    </div>
+    <div id="app_2" class="item_block">
+        <span :title="message">
+            悬停这里几秒试试！
+        </span>
+    </div>
+    <div id="app_3" class="item_block">
+        <p v-if="seen">{{ message_on }}</p>
+        <p v-else :title="message_off">&nbsp;</p>
+        <button @click="changeView">点我试试</button>
+    </div>
+    <div id="app_4" class="item_block">
+        <div :style="blockStyle">
+            <div :style="[iconStyle, addStyle]"
+                 @click="addItems">+</div>
+            <div :style="[iconStyle, deleteStyle]"
+                 @click="deleteItems">-</div>
+            <label>
+                <input :style="inputStyle"
+                       v-model="todos[listLength].text"
+                       @keyup.enter="addItems"
+                       @keyup.46="deleteItems"
+                       placeholder="新计划是……">
+            </label>
+        </div>
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+    <div id="app_5" class="item_block">
+        <p>{{ message }}</p>
+        <button class="float_left"
+                @click="reverseMessage">反转消息</button>
+        <p>反转成功{{ counter }}次！</p>
+    </div>
+    <div id="app_6" class="item_block">
+        <label for="events_list">事件：</label>
+        <select id="events_list" v-model="selectedEvent">
+            <option value="[事件]">请选择</option>
+            <option v-for="event_option in event_options"
+                    :value="event_option.value">
+                {{ event_option.text }}</option>
+        </select>
+        <br>
+        <label v-for="event_person in event_people">
+            <input type="checkbox"
+                   :value="event_person.name"
+                   v-model="checkedPeople">
+            {{ event_person.name }}</label>
+        <label v-for="event_month in event_months">
+            <input type="radio"
+                   :value="event_month.month"
+                   v-model="checkedMonths">
+            {{ event_month.month }}</label>
+        <p>I wrote {{ selectedEvent }} for {{ peopleText }}
+            in {{ checkedMonths }}：<br/>{{ message }}</p>
+        <label>
+            <input v-model="message"
+                   placeholder="双绑输入框示例">
+        </label>
+        <label>
+            <textarea v-model="message"
+                      placeholder="双绑文本框示例"></textarea>
+        </label>
+    </div>
+    <div id="app_7" class="item_block">
+        <ol>
+            <todo-item v-for="item in groceryList"
+                       :todo="item"
+                       :key="item.id"
+                       :style="demoStyle"></todo-item>
+        </ol>
+        <button @click="setRandom">换个心情</button>
+        <p>{{ colorGet }}</p>
+    </div>
+    <div id="app_8" class="item_block">
+        <button @click="onBindClick"
+                class="float_left">运行时绑定测试</button>
+        <button @click="newDataChange">新对象数据改变</button>
+        <p>{{ message }}</p>
+    </div>
+    <div id="app_99" class="item_block">
+        <button @click="setHeight">点击事件测试</button>
+        <p id="test_99">{{ message }}</p>
+    </div>
+<script src="js/vue.js"></script>
+<script src="js/demo_vue.js"></script>
+</body>
+</html>
